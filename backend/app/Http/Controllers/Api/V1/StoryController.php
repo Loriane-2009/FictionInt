@@ -17,9 +17,8 @@ class StoryController extends Controller
         return StoryResource::collection($stories);
     }
 
-    public function show($id)
+    public function show(Story $story)
     {
-        $story = Story::findOrFail($id);
         return new StoryResource($story);
     }
 
