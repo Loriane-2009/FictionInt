@@ -19,6 +19,7 @@ class StoryController extends Controller
 
     public function show(Story $story)
     {
+        $story->load(['chapters', 'chapters.choices']);
         return new StoryResource($story);
     }
 
