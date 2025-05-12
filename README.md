@@ -28,9 +28,11 @@ cd FictionInt
 cd backend
 composer install
 cp .env.example .env
-php artisan migrate
+php artisan migrate --seed
 php artisan serve
 ```
+
+
 
 ### 3. Frontend - Vue.js
 ```bash
