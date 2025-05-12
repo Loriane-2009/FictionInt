@@ -12,6 +12,15 @@ use Illuminate\Http\Response;
 
 class ChapterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum')->only([
+            'store',
+            'update',
+            'destroy',
+        ]);
+    }
+
     public function index(Story $story)
     {
         $chapters = $story->chapters;
