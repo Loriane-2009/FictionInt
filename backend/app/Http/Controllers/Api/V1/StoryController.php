@@ -5,12 +5,22 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoryRequest;
 use App\Http\Resources\StoryResource;
+use App\Models\Chapter;
+use App\Models\Choice;
 use App\Models\Story;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class StoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum')->only([
+            'store',
+            'destroy',
+        ]);
+    }
+
     public function index()
     {
         $stories = Story::all();
@@ -27,17 +37,37 @@ class StoryController extends Controller
     {
         $validated = $request->validated();
 
-        $story = Story::create($validated);
+        DB::transaction(function () use ($validated, &$story) {
+            $story = Story::create([
+                'title' => $validated['title'],
+                'description' => $validated['description'],
+            ]);
 
-        return new StoryResource($story);
-    }
+            $chapterIdMap = [];
 
-    public function update(StoryRequest $request, Story $story)
-    {
-        $validated = $request->validated();
+            foreach ($validated['chapters'] as $index => $chapterData) {
+                $chapter = Chapter::create([
+                    'story_id' => $story->id,
+                    'title' => $chapterData['title'],
+                    'content' => $chapterData['content'],
+                ]);
 
-        $story->update($validated);
+                $chapterIdMap[$index] = $chapter->id;
+            }
+            foreach ($validated['chapters'] as $index => $chapterData) {
+                if (!isset($chapterData['choices'])) continue;
 
+                foreach ($chapterData['choices'] as $choice) {
+                    Choice::create([
+                        'chapter_id' => $chapterIdMap[$index],
+                        'choice_text' => $choice['choice_text'],
+                        'next_chapter_id' => $chapterIdMap[$choice['next_chapter_index']] ?? null,
+                    ]);
+                }
+            }
+        });
+
+        $story->load(['chapters', 'chapters.choices']);
         return new StoryResource($story);
     }
 

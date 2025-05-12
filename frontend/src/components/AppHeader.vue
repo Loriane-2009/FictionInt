@@ -1,15 +1,15 @@
 <template>
   <div class="w-full bg-white">
     <div class="container mx-auto p-2 flex justify-between items-center">
-      <div v-if="isAuthenticated">
-        {{ user.name }}
-      </div>
+      <RouterLink to="/" class="text-2xl font-semibold">
+        Fiction
+      </RouterLink>
       <button
           v-if="isAuthenticated"
           class="p-2 rounded bg-blue-500 text-white"
           @click="() => logout()"
       >
-        Se déconnecter
+        Se déconnecter ({{user.name}})
       </button>
       <button
           v-else
