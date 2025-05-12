@@ -24,6 +24,7 @@ class ChapterController extends Controller
     public function index(Story $story)
     {
         $chapters = $story->chapters;
+        $chapters->load('choices');
         return ChapterResource::collection($chapters);
     }
 
@@ -38,6 +39,7 @@ class ChapterController extends Controller
 
     public function show(Chapter $chapter)
     {
+        $chapter->load('choices');
         return new ChapterResource($chapter);
     }
 

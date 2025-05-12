@@ -17,6 +17,7 @@ class StoryController extends Controller
     {
         $this->middleware('auth:sanctum')->only([
             'store',
+            'update',
             'destroy',
         ]);
     }
@@ -69,6 +70,13 @@ class StoryController extends Controller
 
         $story->load(['chapters', 'chapters.choices']);
         return new StoryResource($story);
+    }
+
+    public function update(StoryRequest $request, Story $story)
+    {
+        $story->update($request->validated());
+        return new StoryResource($choice);
+
     }
 
     public function destroy(Story $story)

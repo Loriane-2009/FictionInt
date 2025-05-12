@@ -11,7 +11,7 @@ class ChoiceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class ChoiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "choice_text" => "required|string",
+            'next_chapter_id' => 'required|integer|exists:chapters,id',
         ];
     }
 }
