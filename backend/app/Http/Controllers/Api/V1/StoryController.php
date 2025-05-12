@@ -37,37 +37,7 @@ class StoryController extends Controller
     public function store(StoryRequest $request)
     {
         $validated = $request->validated();
-
-        DB::transaction(function () use ($validated, &$story) {
-            $story = Story::create([
-                'title' => $validated['title'],
-                'description' => $validated['description'],
-            ]);
-
-            $chapterIdMap = [];
-
-            foreach ($validated['chapters'] as $index => $chapterData) {
-                $chapter = Chapter::create([
-                    'story_id' => $story->id,
-                    'title' => $chapterData['title'],
-                    'content' => $chapterData['content'],
-                ]);
-
-                $chapterIdMap[$index] = $chapter->id;
-            }
-            foreach ($validated['chapters'] as $index => $chapterData) {
-                if (!isset($chapterData['choices'])) continue;
-
-                foreach ($chapterData['choices'] as $choice) {
-                    Choice::create([
-                        'chapter_id' => $chapterIdMap[$index],
-                        'choice_text' => $choice['choice_text'],
-                        'next_chapter_id' => $chapterIdMap[$choice['next_chapter_index']] ?? null,
-                    ]);
-                }
-            }
-        });
-
+        $story = Story::create($validated);
         $story->load(['chapters', 'chapters.choices']);
         return new StoryResource($story);
     }
@@ -75,7 +45,7 @@ class StoryController extends Controller
     public function update(StoryRequest $request, Story $story)
     {
         $story->update($request->validated());
-        return new StoryResource($choice);
+        return new StoryResource($story);
 
     }
 

@@ -8,13 +8,13 @@ export function useStoryProgression() {
     }
 
     const setStoryProgression = (storyId, chapterId, completed = false) => {
-        const newProgression = {...storiesProgression.value, [storyId]: { chapterId, completed }}
+        const newProgression = {...storiesProgression.value, [storyId]: {chapterId, completed}}
         localStorage.setItem("storiesProgression", JSON.stringify(newProgression))
     }
 
     onMounted(() => {
         const progression = localStorage.getItem("storiesProgression")
-        if(progression) {
+        if (progression) {
             storiesProgression.value = JSON.parse(progression)
         }
     })

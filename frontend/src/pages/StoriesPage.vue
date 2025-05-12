@@ -9,7 +9,7 @@
     />
     <RouterLink
         v-if="isAuthenticated"
-        to="/story/create"
+        to="/stories/create"
         class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300"
     >
       Nouvelle histoire

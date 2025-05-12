@@ -9,5 +9,5 @@
     >
       Retour à l'accueil
     </router-link>
-  </div>‚
+  </div>
 </template>

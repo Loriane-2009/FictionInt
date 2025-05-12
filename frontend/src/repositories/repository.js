@@ -9,7 +9,7 @@ export default class Repository {
         const user = localStorage.getItem('user')
         let token = null
 
-        if(user) {
+        if (user) {
             token = JSON.parse(user)?.token
         }
 

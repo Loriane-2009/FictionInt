@@ -69,9 +69,9 @@ const router = useRouter()
 
 const handleSubmit = async () => {
   try {
-    const user = await UserRepository.register(formData.value)
-    if(await login({ email: formData.value.email, password: formData.value.password})) {
-      await router.push({ name: "stories" })
+    await UserRepository.register(formData.value)
+    if (await login({email: formData.value.email, password: formData.value.password})) {
+      await router.push({name: "stories"})
     }
   } catch (e) {
     formErrors.value = e.errors

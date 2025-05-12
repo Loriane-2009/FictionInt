@@ -33,7 +33,7 @@
   </div>
 </template>
 <script setup>
-import {defineModel } from "vue";
+import {defineModel} from "vue";
 
 const title = defineModel("title");
 const content = defineModel("content");

@@ -23,7 +23,22 @@ class StoryRepository extends Repository {
             method: "POST"
         })
 
-        if(!response.ok) {
+        if (!response.ok) {
+            const data = await response.json();
+            throw new FormException(data.errors);
+        }
+
+        return await response.json()
+    }
+
+    async update(id, story) {
+        const response = await fetch(this.url + '/stories/' + id, {
+            headers: this.getHeader(),
+            body: JSON.stringify(story),
+            method: "PUT"
+        })
+
+        if (!response.ok) {
             const data = await response.json();
             throw new FormException(data.errors);
         }
@@ -39,4 +54,5 @@ class StoryRepository extends Repository {
         return response.ok
     }
 }
+
 export default new StoryRepository()

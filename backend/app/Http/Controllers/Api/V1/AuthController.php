@@ -13,15 +13,15 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $data = $request->validate([
-            'name'=>'required|string',
-            'email'=>'required|string|email|unique:users,email',
-            'password'=>'required|min:8|confirmed',
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users,email',
+            'password' => 'required|min:8|confirmed',
         ]);
 
         $user = User::create([
-            'name'=>$data['name'],
-            'email'=>$data['email'],
-            'password'=>Hash::make($data['password'])
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password'])
         ]);
         $token = $user->createToken('my-app-token')->plainTextToken;
 
@@ -30,14 +30,14 @@ class AuthController extends Controller
             'token' => $token
         ];
 
-        return response()->json($response,201);
+        return response()->json($response, 201);
     }
 
     public function login(Request $request)
     {
         $request->validate([
-            'email'=>'required|string|email',
-            'password'=>'required|min:8'
+            'email' => 'required|string|email',
+            'password' => 'required|min:8'
         ]);
 
         $user = User::where('email', $request->email)->first();
@@ -55,7 +55,7 @@ class AuthController extends Controller
             'token' => $token
         ];
 
-        return response()->json($response,201);
+        return response()->json($response, 201);
     }
 
     public function logout()
@@ -63,7 +63,7 @@ class AuthController extends Controller
         auth()->user()->tokens()->delete();
 
         $response = [
-            'message'=>'logged out',
+            'message' => 'logged out',
         ];
         return response($response);
     }

@@ -32,7 +32,7 @@ const router = useRouter();
 
 const handleSubmit = async () => {
   if (await login(credentials.value)) {
-    router.push({name: "stories"})
+    await router.push({name: "stories"})
   } else {
     credentials.value.password = ""
     formError.value = "Adresse email ou mot de passe incorrect."

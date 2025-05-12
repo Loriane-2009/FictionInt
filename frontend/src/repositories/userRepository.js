@@ -22,7 +22,7 @@ class UserRepository extends Repository {
             headers: this.getHeader()
         })
 
-        if(!response.ok) {
+        if (!response.ok) {
             const data = await response.json();
             throw new FormException(data.errors);
         }
