@@ -1,11 +1,13 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
-import StoryPage from "../pages/StoryPage.vue";
+import { createWebHistory, createRouter } from 'vue-router'
+import StoriesPage from "@/pages/StoriesPage.vue";
+import StoryPage from "@/pages/StoryPage.vue";
 
 const routes = [
-    { path: '/', component: StoryPage },
+    { path: '/', component: StoriesPage },
+    { path: "/stories/:id", component: StoryPage}
 ]
 
 export const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes,
 })

@@ -6,13 +6,12 @@
 </template>
 <script setup>
 import {onMounted, ref} from "vue";
-import StoryRepository from "@/repositories/storyRepository.js";
 import StoryCard from "@/components/StoryCard.vue";
+import StoryRepository from "@/repositories/storyRepository.js";
 
 const stories = ref([])
 
 onMounted(async () => {
   stories.value = await StoryRepository.getAll()
-  console.log(stories)
 })
 </script>
