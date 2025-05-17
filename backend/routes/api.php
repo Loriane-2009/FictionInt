@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function () {
     Route::apiResource('stories', StoryController::class);
     Route::apiResource('stories.chapters', ChapterController::class);
-    Route::apiResource('chapters.choices', ChoiceController::class)->shallow();
+    Route::apiResource('chapters.choices', ChoiceController::class);
     Route::post('/register',[AuthController::class,'register'])->name('register');
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 

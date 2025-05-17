@@ -16,7 +16,7 @@
       </button>
     </div>
     <RouterLink class="text-end font-medium text-blue-600 dark:text-blue-500 hover:underline" to="/register">
-      Page encore de compte ? Créer en un ici !
+      Pas encore de compte ? Créer en un ici !
     </RouterLink>
   </form>
 </template>

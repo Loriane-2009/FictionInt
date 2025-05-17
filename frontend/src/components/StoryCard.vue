@@ -9,7 +9,7 @@
         class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300"
     >
       <span v-if="!progression">Commencer l'histoire</span>
-      <span v-else-if="progression.completed">Recommancer</span>
+      <span v-else-if="progression.completed">Recommencer</span>
       <span v-else>Continuer</span>
     </router-link>
     <div v-if="isAuthenticated" class="flex gap-4 absolute bottom-2 right-2">
