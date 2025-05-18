@@ -6,7 +6,7 @@
       </RouterLink>
       <button
           v-if="isAuthenticated"
-          class="p-2 rounded bg-blue-500 text-white"
+          class="p-2 rounded bg-sky-800 text-white"
           @click="() => logout()"
       >
         Se déconnecter ({{user.name}})
