@@ -1,7 +1,7 @@
 <template>
   <div class="size-full app-background flex items-center justify-center">
     <div v-if="chapter" class="glass-card p-4 rounded-lg w-full max-w-2xl">
-      <h1 class="text-4xl font-extrabold text-center text-sky-100">{{ chapter.title }}</h1>
+      <h1 class="text-3xl font-extrabold text-center text-sky-100 py-4">{{ chapter.title }}</h1>
       <p class="text-lg text-sky-200 leading-relaxed text-justify">
         {{ chapter.content }}
       </p>
