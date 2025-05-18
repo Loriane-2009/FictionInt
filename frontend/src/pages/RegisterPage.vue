@@ -1,6 +1,6 @@
 <template>
   <div class="size-full">
-    <h1 class="text-4xl font-bold text-center text-indigo-700 mb-4">Inscription</h1>
+    <h1 class="text-4xl font-bold text-center text-sky-200 mb-4">Inscription</h1>
     <RegisterForm/>
   </div>
 </template>
