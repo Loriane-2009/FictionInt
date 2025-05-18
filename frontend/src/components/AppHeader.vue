@@ -13,7 +13,7 @@
       </button>
       <button
           v-else
-          class="p-2 rounded bg-blue-500 text-white"
+          class="p-2 rounded bg-sky-800 text-white"
           @click="() => router.push({ name: 'login'})"
       >
         Se connecter
