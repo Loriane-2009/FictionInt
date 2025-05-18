@@ -1,50 +1,50 @@
 <template>
   <form
-      class="container max-w-2xl mx-auto bg-white p-4 flex flex-col gap-4 rounded"
+      class="backdrop-blur-lg container max-w-2xl mx-auto p-4 flex flex-col gap-4 rounded"
       @submit.prevent="handleSubmit">
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2 text-sky-100">
       <FormError :errors="formErrors" name="name"/>
       <label>Nom</label>
       <input
-          class="border border-gray-100 p-2"
+          class="border border-sky-200 p-2"
           type="text"
           v-model="formData.name"
       />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2 text-sky-100">
       <FormError :errors="formErrors" name="email"/>
       <label>Adresse email</label>
       <input
-          class="border border-gray-100 p-2"
+          class="border border-sky-200 p-2"
           type="email"
           v-model="formData.email"
       />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2 text-sky-100">
       <FormError :errors="formErrors" name="password"/>
       <label>Mote de passe</label>
       <input
-          class="border border-gray-100 p-2"
+          class="border border-sky-200 p-2"
           v-model="formData.password"
           type="password"
       />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2 text-sky-100">
       <FormError :errors="formErrors" name="password_confirmation"/>
       <label>Confirmer le mot de passe</label>
       <input
-          class="border border-gray-100 p-2"
+          class="border border-sky-200 p-2"
           v-model="formData.password_confirmation"
           type="password"
       />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2 text-sky-100 ">
       <button
-          class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg text-lg transition duration-300">
+          class="bg-sky-800 hover:bg-sky-950 text-white font-bold py-2 px-4 rounded-lg text-lg transition duration-300">
         S'inscrire
       </button>
     </div>
-    <RouterLink class="text-end font-medium text-blue-600 dark:text-blue-500 hover:underline" to="/login">
+    <RouterLink class="text-end font-medium text-sky-600 hover:underline" to="/login">
       Déjà un compte ? Connecte toi ici !
     </RouterLink>
   </form>
