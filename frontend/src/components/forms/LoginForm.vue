@@ -1,5 +1,5 @@
 <template>
-  <form class="backdrop-blur-lg container max-w-2xl mx-auto p-4 flex flex-col gap-4 rounded" @submit.prevent="handleSubmit">
+  <form class="glass-card container max-w-2xl mx-auto p-4 flex flex-col gap-4 rounded" @submit.prevent="handleSubmit">
     <p class="text-red-500" v-if="formError">{{ formError }}</p>
     <div class="flex flex-col gap-2 text-sky-100">
       <label>Adresse email</label>

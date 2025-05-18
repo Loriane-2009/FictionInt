@@ -7,3 +7,10 @@
     background-attachment: fixed;
     background-position: center;
   }
+  
+  .glass-card {
+    @apply backdrop-blur-md border border-white/20 rounded-lg p-4;
+    background-color: rgba(41, 41, 48, 0.15); /* Fond plus visible */
+    
+  }
+  

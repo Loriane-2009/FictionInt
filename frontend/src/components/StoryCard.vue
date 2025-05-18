@@ -1,6 +1,6 @@
 <template>
   <div
-      class="backdrop-blur-lg shadow-md max-w-2xl w-full rounded-lg p-6 flex flex-col items-center transition hover:shadow-xl relative">
+      class="glass-card shadow-md max-w-2xl w-full rounded-lg p-6 flex flex-col items-center transition hover:shadow-xl relative">
     <h2 class="text-2xl font-semibold text-sky-100 mb-4">{{ story.title }}</h2>
     <p class="text-sky-200 text-center mb-6">{{ story.description }}</p>
     <router-link
